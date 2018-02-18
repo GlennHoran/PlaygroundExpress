@@ -3,12 +3,18 @@
 void setup() {
   // Initialize the circuit playground
   CircuitPlayground.begin();
- // Serial.begin(9600);
+  Serial.begin(9600);
 }
  
 void loop() {
-  for (int i=0; i<9; i++){
+  for (int i=0; i<10; i++){
     CircuitPlayground.setPixelColor(i,convertAccToInt(CircuitPlayground.motionX()), convertAccToInt(CircuitPlayground.motionY()),convertAccToInt(CircuitPlayground.motionZ()));
+  Serial.print("\n X: ");
+  Serial.print(convertAccToInt(CircuitPlayground.motionX()));
+  Serial.print("\n Y: ");
+  Serial.print(convertAccToInt(CircuitPlayground.motionY()));
+  
+  
   }
 }
 
@@ -20,8 +26,8 @@ int convertAccToInt(float x){
   //converts float into int
   i = int (accelerometerValueAsInt);
   //converts into value 0-255 for neoplixel input
-  neoPixelValue = i/9;
-return i; 
+  neoPixelValue = i/18;
+return neoPixelValue; 
  
 
 }
